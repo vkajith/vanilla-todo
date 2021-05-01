@@ -20,7 +20,15 @@ function addTodo(e) {
   todoDiv.classList.add("todo");
   //Create list
   const newTodo = document.createElement("li");
-  newTodo.innerText = todoInput.value;
+  
+  var input = document.createElement('input');
+    	input.type = "text";
+    	input.disabled = true;
+    	input.value = todoInput.value;
+    	input.classList.add('item_input');  
+  
+  newTodo.appendChild(input);
+   
   //Save to local - do this last
   //Save to local
   saveLocalTodos(todoInput.value);
@@ -38,6 +46,12 @@ function addTodo(e) {
   trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
   trashButton.classList.add("trash-btn");
   todoDiv.appendChild(trashButton);
+  //Create Edit button
+  const editButton = document.createElement("button");
+  editButton.innerHTML = `<i class="fas fa-edit"></i>`;
+  editButton.classList.add("edit-btn");
+  todoDiv.appendChild(editButton);
+  
   //attach final Todo
   todoList.appendChild(todoDiv);
 }
@@ -63,6 +77,7 @@ function deleteTodo(e) {
 }
 
 function editTodo(e){
+   
   
 }
 

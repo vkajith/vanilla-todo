@@ -48,6 +48,16 @@ form button:hover {
   list-style: none;
 }
 
+
+.item_input{
+	background: none;
+	outline: none;
+	border: none;
+	color: #5eaaa8;
+	font-size: 1.4rem;
+	width: 245px;
+}
+
 .todo {
   margin: 0.5rem;
   background: white;
@@ -64,7 +74,7 @@ form button:hover {
 .todo li {
   flex: 1;
 }
-
+.edit-btn,
 .trash-btn,
 .complete-btn {
   background: #ff6f47;
@@ -77,6 +87,10 @@ form button:hover {
 .complete-btn {
   background: rgb(11, 212, 162);
 }
+.edit-btn{
+  background:greenyellow;
+}
+
 .todo-item {
   padding: 0rem 0.5rem;
 }
