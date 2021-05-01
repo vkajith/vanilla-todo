@@ -50,14 +50,18 @@ function addTodo(e) {
   const editButton = document.createElement("button");
   editButton.innerHTML = `<i class="fas fa-edit"></i>`;
   editButton.classList.add("edit-btn");
+  // editButton.addEventListener("click",editTodo);
   todoDiv.appendChild(editButton);
   
   //attach final Todo
   todoList.appendChild(todoDiv);
 }
 
+
 function deleteTodo(e) {
   const item = e.target;
+
+  console.log(item.classList);
 
   if (item.classList[0] === "trash-btn") {
     // e.target.parentElement.remove();
@@ -74,11 +78,18 @@ function deleteTodo(e) {
     todo.classList.toggle("completed");
     console.log(todo);
   }
-}
 
-function editTodo(e){
+  if(item.classList[0] === "edit-btn"){
+  console.log(item);
+  const todo = item.parentElement;
+  const input = todo.childNodes[0];
+  const ele = input.childNodes[0];
+  console.log(ele);
+  ele.disabled = false;
+  ele.focus();
+  }
    
-  
+
 }
 
 function filterTodo(e) {
@@ -140,7 +151,15 @@ function getTodos() {
     todoDiv.classList.add("todo");
     //Create list
     const newTodo = document.createElement("li");
-    newTodo.innerText = todo;
+
+    var input = document.createElement('input');
+    	input.type = "text";
+    	input.disabled = true;
+    	input.value = todo;
+    	input.classList.add('item_input');  
+
+
+    newTodo.appendChild(input);
     newTodo.classList.add("todo-item");
     todoDiv.appendChild(newTodo);
     todoInput.value = "";
@@ -154,6 +173,13 @@ function getTodos() {
     trashButton.innerHTML = `<i class="fas fa-trash"></i>`;
     trashButton.classList.add("trash-btn");
     todoDiv.appendChild(trashButton);
+   
+    const editButton = document.createElement("button");
+    editButton.innerHTML = `<i class="fas fa-edit"></i>`;
+    editButton.classList.add("edit-btn");
+    // editButton.addEventListener("click",editTodo);
+    todoDiv.appendChild(editButton);
+
     //attach final Todo
     todoList.appendChild(todoDiv);
   });
